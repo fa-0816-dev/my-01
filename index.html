@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园景点导览 - Campus Guide</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="Router.navigate('/')">
+                <span class="brand-icon">🏫</span>
+                <span class="brand-text">校园景点导览</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#/" data-route="/" class="nav-link">首页</a>
+                <a href="#/spots" data-route="/spots" class="nav-link">景点列表</a>
+                <a href="#/map" data-route="/map" class="nav-link">地图导览</a>
+                <a href="#/recognize" data-route="/recognize" class="nav-link">以图识景</a>
+                <a href="#/travels" data-route="/travels" class="nav-link">游记</a>
+                <a href="#/access" data-route="/access" class="nav-link auth-entry">登录/注册</a>
+            </div>
+            <div class="nav-actions">
+                <select id="theme-switcher" class="theme-switcher" title="切换主题">
+                    <option value="light">清新青绿</option>
+                    <option value="warm">暖米白</option>
+                    <option value="dark">深色模式</option>
+                </select>
+                <div id="user-area" class="user-area">
+                    <a href="#/login" class="btn btn-outline">登录</a>
+                    <a href="#/register" class="btn btn-primary">注册</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main id="app" class="app-container"></main>
+
+    <!-- 底部页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>🏫 校园景点导览</h4>
+                <p>发现校园之美，记录青春足迹</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h4>快速链接</h4>
+                <div class="footer-links-grid">
+                    <a href="#/">首页</a>
+                    <a href="#/spots">景点</a>
+                    <a href="#/travels">游记</a>
+                    <a href="#/map">地图</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>联系我们</h4>
+                <p>📧 campus@guide.edu</p>
+                <p>📍 大学校园</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 校园景点导览系统</p>
+        </div>
+    </footer>
+
+    <!-- Toast 提示容器 -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Loading 遮罩 -->
+    <div id="loading" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>加载中...</p>
+    </div>
+
+    <!-- 模态框容器 -->
+    <div id="modal-container" class="modal-container hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <button class="modal-close" onclick="UI.closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer" id="modal-footer"></div>
+        </div>
+    </div>
+
+    <!-- 脚本加载顺序重要：数据层 → 算法 → 工具 → 路由 → 页面 -->
+    <script src="js/data.js"></script>
+    <script src="js/algorithms.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/pages_user.js"></script>
+    <script src="js/pages_admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
